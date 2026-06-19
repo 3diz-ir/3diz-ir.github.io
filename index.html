@@ -3,37 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تری دیز | چاپ سه بعدی و خلاقیت</title>
+    <title>تری دیز | تجسم سه‌بعدی خلاقیت</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
+    <canvas id="filamentCanvas"></canvas>
+
     <header>
-        <nav>
+        <nav class="nav-container">
             <div class="logo-container">
-                <img src="images/logo.png" alt="لوگو تری دیز" class="site-logo">
-                <!-- <div class="logo-text">3Diz<span>.ir</span></div> -->
+                <i class="fas fa-cubes-stacked logo-icon"></i>
+                <div class="logo-text">3Diz<span>.ir</span></div>
             </div>
+            
             <ul class="nav-links">
-                <li><a href="#home">خانه</a></li>
-                <li><a href="#about">درباره ما</a></li>
-                <li><a href="#products">نمونه محصولات</a></li>
-                <li><a href="#links">خرید و ارتباط</a></li>
+                <li><a href="#home" class="active"><i class="fas fa-home"></i> خانه</a></li>
+                <li><a href="#about"><i class="fas fa-info-circle"></i> چرا تری دیز؟</a></li>
+                <li><a href="#products"><i class="fas fa-boxes-stacked"></i> نمونه محصولات</a></li>
+                <li><a href="#links"><i class="fas fa-shopping-cart"></i> خرید و ارتباط</a></li>
             </ul>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
+
+            <div class="menu-toggle" id="mobileMenuBtn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </nav>
     </header>
 
     <section id="home" class="hero">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="animate-text">👋 سلام به دنیای سه بعدی تری دیز خوش آمدید</h1>
-            <p class="animate-text-delay">🏅 دنیایی پر از خلاقیت هایی در ابعاد سه بعدی</p>
+            <div class="hero-badge">🔮 پرینت سه‌بعدی افکار شما</div>
+            <h1>به دنیای خلاقیت لایه به لایه <span class="gradient-text">تری دیز</span> خوش آمدید</h1>
+            <p>ما با استفاده از متریال‌های نوین و دقیق‌ترین پرینترهای سه‌بعدی، فانتزی‌ترین اکسسوری‌ها و دکوراسیون مدرن را برای شما خلق می‌کنیم.</p>
             <div class="hero-btns">
-                <a href="#products" class="btn primary">مشاهده محصولات</a>
-                <a href="#links" class="btn secondary">پل‌های ارتباطی</a>
+                <a href="#products" class="btn-main">مشاهده کاتالوگ <i class="fas fa-arrow-left"></i></a>
+                <a href="#links" class="btn-sub">پل‌های ارتباطی</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="cube-3d">
+                <div class="cube-face front">3DIZ</div>
+                <div class="cube-face back">PLA</div>
+                <div class="cube-face left">PETG</div>
+                <div class="cube-face right">3DPRINT</div>
+                <div class="cube-face top">Creality</div>
+                <div class="cube-face bottom">Quality</div>
             </div>
         </div>
     </section>
@@ -41,25 +59,25 @@
     <section id="about" class="about-section">
         <div class="section-title">
             <h2>چرا تری دیز؟</h2>
+            <p>تمایز ما در جزئیات و عشق به تولید خلاقانه است</p>
             <div class="underline"></div>
         </div>
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-card">
-                    <div class="icon-box"><i class="fas fa-paint-brush"></i></div>
-                    <h3>🎨 طراحی و تولید خاص</h3>
-                    <p>طراحی و تولید اکسسوری‌های خاص و فانتزی که مشابه آن را جایی نخواهید دید.</p>
-                </div>
-                <div class="about-card">
-                    <div class="icon-box"><i class="fas fa-leaf"></i></div>
-                    <h3>🌱 دوستدار محیط زیست</h3>
-                    <p>استفاده از متریال PLA که از منابع طبیعی تهیه شده و با محیط زیست سازگار است.</p>
-                </div>
-                <div class="about-card">
-                    <div class="icon-box"><i class="fas fa-truck"></i></div>
-                    <h3>📦 ارسال سراسری</h3>
-                    <p>ارسال سریع و ایمن محصولات به تمام نقاط کشور با بسته‌بندی حرفه‌ای.</p>
-                </div>
+        
+        <div class="about-grid">
+            <div class="about-card" data-tilt>
+                <div class="icon-box"><i class="fas fa-paint-brush"></i></div>
+                <h3>🎨 طراحی و تولید خاص</h3>
+                <p>طراحی و تولید اکسسوری‌های خاص و فانتزی که مشابه آن را در هیچ فروشگاه دیگری نخواهید دید.</p>
+            </div>
+            <div class="about-card" data-tilt>
+                <div class="icon-box"><i class="fas fa-leaf"></i></div>
+                <h3>🌱 دوستدار محیط زیست</h3>
+                <p>استفاده از متریال باکیفیت PLA که از منابع نشاسته ذرت تهیه شده و کاملاً با طبیعت سازگار است.</p>
+            </div>
+            <div class="about-card" data-tilt>
+                <div class="icon-box"><i class="fas fa-truck"></i></div>
+                <h3>📦 ارسال سراسری</h3>
+                <p>ارسال سریع، ایمن و بیمه‌شده محصولات به تمام نقاط کشور با بسته‌بندی‌های ضد ضربه حرفه‌ای.</p>
             </div>
         </div>
     </section>
@@ -67,129 +85,87 @@
     <section id="products" class="products-section">
         <div class="section-title">
             <h2>نمونه محصولات ما</h2>
-            <p>بخشی از خلاقیت‌های سه‌بعدی تری دیز</p>
+            <p>بخشی از آخرین سازه‌ها و مدل‌های چاپ شده تری دیز</p>
             <div class="underline"></div>
         </div>
+        
         <div class="product-gallery">
             <div class="product-item">
-                <img src="images/product1.jpg" alt="نمونه محصول 1">
+                <img src="images/product1.jpg" alt="اکسسوری دکوراتیو">
                 <div class="product-info">
                     <h3>اکسسوری دکوراتیو</h3>
-                    <span>چاپ سه‌بعدی دقیق</span>
+                    <span><i class="fas fa-layer-group"></i> چاپ فوق دقیق</span>
                 </div>
             </div>
             <div class="product-item">
-                <img src="images/product2.jpg" alt="نمونه محصول 2">
+                <img src="images/product2.jpg" alt="فیجت و سرگرمی">
                 <div class="product-info">
                     <h3>فیجت و سرگرمی</h3>
-                    <span>متریال با کیفیت</span>
+                    <span><i class="fas fa-cube"></i> مکانیکال متحرک</span>
                 </div>
             </div>
             <div class="product-item">
-                <img src="images/product3.jpg" alt="نمونه محصول 3">
+                <img src="images/product3.jpg" alt="دکوراسیون مدرن">
                 <div class="product-info">
                     <h3>دکوراسیون مدرن</h3>
-                    <span>طراحی اختصاصی</span>
+                    <span><i class="fas fa-wand-magic-sparkles"></i> طراحی اختصاصی</span>
                 </div>
             </div>
             <div class="product-item">
-                <img src="images/product1.jpg" alt="نمونه محصول 1">
+                <img src="images/product1.jpg" alt="اکسسوری دکوراتیو">
                 <div class="product-info">
-                    <h3>اکسسوری دکوراتیو</h3>
-                    <span>چاپ سه‌بعدی دقیق</span>
+                    <h3>گلدان هندسی</h3>
+                    <span><i class="fas fa-layer-group"></i> سبک مینیمال</span>
                 </div>
             </div>
             <div class="product-item">
-                <img src="images/product2.jpg" alt="نمونه محصول 2">
+                <img src="images/product2.jpg" alt="فیجت و سرگرمی">
                 <div class="product-info">
-                    <h3>فیجت و سرگرمی</h3>
-                    <span>متریال با کیفیت</span>
+                    <h3>آرت توی فانتزی</h3>
+                    <span><i class="fas fa-palette"></i> رنگ‌بندی خاص</span>
                 </div>
             </div>
             <div class="product-item">
-                <img src="images/product3.jpg" alt="نمونه محصول 3">
+                <img src="images/product3.jpg" alt="دکوراسیون مدرن">
                 <div class="product-info">
-                    <h3>دکوراسیون مدرن</h3>
-                    <span>طراحی اختصاصی</span>
+                    <h3>استند رومیزی</h3>
+                    <span><i class="fas fa-microchip"></i> کاربردی و شیک</span>
                 </div>
             </div>
-                        <div class="product-item">
-                <img src="images/product1.jpg" alt="نمونه محصول 1">
-                <div class="product-info">
-                    <h3>اکسسوری دکوراتیو</h3>
-                    <span>چاپ سه‌بعدی دقیق</span>
-                </div>
-            </div>
-            <div class="product-item">
-                <img src="images/product2.jpg" alt="نمونه محصول 2">
-                <div class="product-info">
-                    <h3>فیجت و سرگرمی</h3>
-                    <span>متریال با کیفیت</span>
-                </div>
-            </div>
-            <div class="product-item">
-                <img src="images/product3.jpg" alt="نمونه محصول 3">
-                <div class="product-info">
-                    <h3>دکوراسیون مدرن</h3>
-                    <span>طراحی اختصاصی</span>
-                </div>
-            </div>
-                        <div class="product-item">
-                <img src="images/product1.jpg" alt="نمونه محصول 1">
-                <div class="product-info">
-                    <h3>اکسسوری دکوراتیو</h3>
-                    <span>چاپ سه‌بعدی دقیق</span>
-                </div>
-            </div>
-            <div class="product-item">
-                <img src="images/product2.jpg" alt="نمونه محصول 2">
-                <div class="product-info">
-                    <h3>فیجت و سرگرمی</h3>
-                    <span>متریال با کیفیت</span>
-                </div>
-            </div>
-            <div class="product-item">
-                <img src="images/product3.jpg" alt="نمونه محصول 3">
-                <div class="product-info">
-                    <h3>دکوراسیون مدرن</h3>
-                    <span>طراحی اختصاصی</span>
-                </div>
-            </div>
-                        
         </div>
     </section>
 
     <section id="links" class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>🛍️ آماده خرید هستید؟</h2>
-                <p>برای مشاهده محصولات بیشتر و ثبت سفارش از طریق لینک‌های زیر اقدام کنید.</p>
-                <div class="social-links-v2">
-                    <a href="https://basalam.com/3diz-ir" target="_blank" class="social-btn basalam">
-                        <i class="fas fa-shopping-basket"></i>
-                        <span>غرفه ما در باسلام</span>
-                    </a>
-                    <a href="https://t.me/Gallery_3diz" target="_blank" class="social-btn telegram">
-                        <i class="fab fa-telegram-plane"></i>
-                        <span>کانال تلگرام ما</span>
-                    </a>
-                </div>
+        <div class="cta-container">
+            <h2>🛍️ آماده ثبت سفارش هستید؟</h2>
+            <p>برای مشاهده تنوع بی‌نظیر محصولات، قیمت‌ها و سفارش مدل‌های دلخواه، وارد غرفه یا کانال ما شوید.</p>
+            <div class="social-grid">
+                <a href="https://basalam.com/3diz-ir" target="_blank" class="social-card basalam">
+                    <i class="fas fa-shopping-basket"></i>
+                    <div>
+                        <h4>غرفه تری دیز در باسلام</h4>
+                        <p>خرید امن همراه با ضمانت بازگشت وجه</p>
+                    </div>
+                </a>
+                <a href="https://t.me/Gallery_3diz" target="_blank" class="social-card telegram">
+                    <i class="fab fa-telegram-plane"></i>
+                    <div>
+                        <h4>کانال تلگرام گالری</h4>
+                        <p>آخرین اخبار، تخفیف‌ها و ویدیو کارکرد محصولات</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
-    <section class="contact-footer">
-        <div class="contact-container">
-            <h3>سوالی داشتی؟ حتماً بپرس، خوشحال میشم کمک کنم</h3>
-            <p class="brand-url">3diz.ir</p>
-            <p class="thanks-msg">با تشکر از حمایت شما</p>
-        </div>
+    <section class="footer-contact">
+        <h3>سوالی دارید؟ ایده‌ای برای پرینت دارید؟ بپرسید، خوشحال می‌شیم کمک کنیم!</h3>
+        <div class="web-url">3Diz.ir</div>
+        <p class="support-text">پشتیبانی ۲۴ ساعته در تلگرام و باسلام</p>
     </section>
 
     <footer>
-        <div class="footer-bottom">
-            <p>&copy; 2026 تری دیز - تمامی حقوق محفوظ است</p>
-        </div>
+        <p>&copy; 2026 تری دیز - تمامی حقوق مادی و معنوی محفوظ است.</p>
     </footer>
 
     <script src="script.js"></script>
