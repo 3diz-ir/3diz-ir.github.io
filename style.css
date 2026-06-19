@@ -1,13 +1,12 @@
 :root {
-    --bg-dark: #080b11;
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --card-border: rgba(255, 255, 255, 0.07);
-    --text-white: #ffffff;
-    --text-gray: #94a3b8;
-    --primary-neon: #ff3838; /* رنگ قرمز پرینترهای پیشرفته */
-    --secondary-neon: #ff9f43;
-    --gradient-glow: linear-gradient(135deg, #ff3838, #ff9f43);
-    --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --bg-deep: #050508;
+    --neon-cyan: #00f2fe;
+    --neon-pink: #ff007f;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --glass-bg: rgba(255, 255, 255, 0.02);
+    --border-glow: rgba(0, 242, 254, 0.15);
+    --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -19,14 +18,13 @@
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-white);
+    background-color: var(--bg-deep);
+    color: var(--text-primary);
     overflow-x: hidden;
-    line-height: 1.8;
 }
 
-/* بوم پس‌زمینه ذرات (فیلامنت رندر) */
-#filamentCanvas {
+/* بوم پس‌زمینه زنده و حساس به ماوس */
+#cyberCanvas {
     position: fixed;
     top: 0;
     left: 0;
@@ -36,64 +34,64 @@ body {
     pointer-events: none;
 }
 
-/* ناوبری شیشه‌ای هوشمند */
+/* هدر لوکس نئونی */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(8, 11, 17, 0.75);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-bottom: 1px solid var(--card-border);
+    background: rgba(5, 5, 8, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 15px 25px;
+    padding: 18px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo-container {
+.logo-wrapper {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+    position: relative;
 }
 
-.logo-icon {
-    font-size: 1.8rem;
-    background: var(--gradient-glow);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.logo-cube {
+    font-size: 1.6rem;
+    color: var(--neon-cyan);
+    animation: pulse 2s infinite ease-in-out;
 }
 
 .logo-text {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     font-weight: 900;
     letter-spacing: 0.5px;
 }
 
-.logo-text span {
-    color: var(--primary-neon);
+.logo-text .dot {
+    color: var(--neon-pink);
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 25px;
+    gap: 15px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-gray);
+    color: var(--text-secondary);
     font-weight: 700;
     font-size: 0.95rem;
-    padding: 8px 16px;
-    border-radius: 50px;
+    padding: 10px 20px;
+    border-radius: 12px;
     transition: var(--transition);
     display: flex;
     align-items: center;
@@ -101,12 +99,12 @@ header {
 }
 
 .nav-links a:hover, .nav-links a.active {
-    color: var(--text-white);
-    background: var(--card-bg);
-    box-shadow: inset 0 0 10px rgba(255, 56, 56, 0.1);
+    color: var(--text-primary);
+    background: rgba(0, 242, 254, 0.06);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
 }
 
-/* منوی ریسپانسیو همبرگری */
+/* منوی همبرگری موبایل */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -116,57 +114,57 @@ header {
 
 .menu-toggle .bar {
     width: 25px;
-    height: 3px;
-    background-color: var(--text-white);
-    border-radius: 3px;
+    height: 2px;
+    background-color: var(--text-primary);
     transition: var(--transition);
 }
 
-/* هیرو سکشن مدرن */
+/* هیرو سکشن سایبرپانک */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 120px 25px 60px;
-    gap: 50px;
+    padding: 140px 25px 60px;
+    gap: 40px;
 }
 
 .hero-content {
-    flex: 1.2;
+    flex: 1.3;
 }
 
-.hero-badge {
-    background: rgba(255, 56, 56, 0.1);
-    border: 1px solid rgba(255, 56, 56, 0.2);
-    color: var(--primary-neon);
-    padding: 6px 18px;
-    border-radius: 50px;
+.cyber-badge {
+    background: rgba(255, 0, 127, 0.08);
+    border: 1px solid rgba(255, 0, 127, 0.2);
+    color: var(--neon-pink);
+    padding: 6px 16px;
+    border-radius: 8px;
     display: inline-block;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin-bottom: 25px;
+    letter-spacing: 0.5px;
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 3.4rem;
     font-weight: 900;
     line-height: 1.4;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .gradient-text {
-    background: var(--gradient-glow);
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .hero-content p {
-    color: var(--text-gray);
+    color: var(--text-secondary);
     font-size: 1.2rem;
     margin-bottom: 40px;
-    max-width: 600px;
+    max-width: 620px;
 }
 
 .hero-btns {
@@ -174,108 +172,135 @@ header {
     gap: 20px;
 }
 
-.btn-main {
-    background: var(--gradient-glow);
+.btn-glow {
+    background: linear-gradient(45deg, var(--neon-pink), #ff0055);
     color: white;
+    padding: 15px 35px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 0 25px rgba(255, 0, 127, 0.4);
+    transition: var(--transition);
+}
+
+.btn-glow:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 40px rgba(255, 0, 127, 0.7);
+}
+
+.btn-outline {
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    color: var(--neon-cyan);
     padding: 14px 35px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    box-shadow: 0 10px 25px rgba(255, 56, 56, 0.35);
-    transition: var(--transition);
-}
-
-.btn-main:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 30px rgba(255, 56, 56, 0.5);
-}
-
-.btn-sub {
-    border: 2px solid var(--card-border);
-    color: var(--text-white);
-    padding: 12px 35px;
-    border-radius: 50px;
+    border-radius: 12px;
     text-decoration: none;
     font-weight: 700;
     transition: var(--transition);
-    backdrop-filter: blur(5px);
 }
 
-.btn-sub:hover {
-    background: var(--card-bg);
-    transform: translateY(-4px);
+.btn-outline:hover {
+    background: rgba(0, 242, 254, 0.05);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+    transform: translateY(-5px);
 }
 
-/* المان بصری مکعب پرینتر ۳ بعدی در سمت چپ هیرو */
+/* هولوگرام و شبیه‌ساز لیزر سه بعدی در هیرو */
 .hero-visual {
-    flex: 0.8;
+    flex: 0.7;
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1000px;
 }
 
-.cube-3d {
-    width: 200px;
-    height: 200px;
+.hologram-container {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.holo-ring {
+    position: absolute;
+    border: 2px dashed var(--neon-cyan);
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+.ring-1 {
+    width: 280px;
+    height: 280px;
+    animation: spinCube 20s linear infinite;
+}
+
+.ring-2 {
+    width: 220px;
+    height: 220px;
+    border-color: var(--neon-pink);
+    animation: spinCube 10s linear infinite reverse;
+}
+
+.holo-cube {
+    width: 100px;
+    height: 100px;
     position: relative;
     transform-style: preserve-3d;
-    animation: rotateCube 12s linear infinite;
+    animation: spinCube 8s linear infinite;
 }
 
-.cube-face {
+.holo-cube span {
     position: absolute;
-    width: 200px;
-    height: 200px;
-    background: rgba(255, 56, 56, 0.04);
-    border: 2px solid rgba(255, 56, 56, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.7);
-    box-shadow: inset 0 0 30px rgba(255, 56, 56, 0.1);
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(0,242,254,0.05), rgba(255,0,127,0.1));
+    border: 1px solid var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0,242,254,0.2);
 }
 
-.front  { transform: translateZ(100px); }
-.back   { transform: rotateY(180deg) translateZ(100px); }
-.left   { transform: rotateY(-90deg) translateZ(100px); }
-.right  { transform: rotateY(90deg) translateZ(100px); }
-.top    { transform: rotateX(90deg) translateZ(100px); }
-.bottom { transform: rotateX(-90deg) translateZ(100px); }
+.holo-cube span:nth-child(1) { transform: rotateY(0deg) translateZ(50px); }
+.holo-cube span:nth-child(2) { transform: rotateY(90deg) translateZ(50px); }
+.holo-cube span:nth-child(3) { transform: rotateY(180deg) translateZ(50px); }
+.holo-cube span:nth-child(4) { transform: rotateY(-90deg) translateZ(50px); }
 
-@keyframes rotateCube {
+.laser-beam {
+    position: absolute;
+    top: -20px;
+    width: 2px;
+    height: 120px;
+    background: linear-gradient(to bottom, var(--neon-pink), transparent);
+    animation: laserScan 3s ease-in-out infinite;
+}
+
+@keyframes laserScan {
+    0%, 100% { transform: translateY(0); opacity: 0; }
+    50% { transform: translateY(160px); opacity: 1; }
+}
+
+@keyframes spinCube {
     0% { transform: rotateX(0deg) rotateY(0deg); }
     100% { transform: rotateX(360deg) rotateY(360deg); }
 }
 
-/* طراحی بخش سرتیترهای تری دیز */
+/* بخش ویژگی‌ها (کارت‌های نئون هوشمند) */
 .section-title {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 70px;
     padding-top: 100px;
 }
 
 .section-title h2 {
-    font-size: 2.4rem;
+    font-size: 2.3rem;
     font-weight: 900;
-    margin-bottom: 10px;
 }
 
-.section-title p {
-    color: var(--text-gray);
+.glow-line {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+    margin: 20px auto 0;
+    box-shadow: 0 0 10px var(--neon-cyan);
 }
 
-.underline {
-    width: 65px;
-    height: 4px;
-    background: var(--gradient-glow);
-    margin: 15px auto 0;
-    border-radius: 10px;
-}
-
-/* بخش درباره ما (کارت‌های تعاملی سه بعدی) */
 .about-section, .products-section {
     max-width: 1200px;
     margin: 0 auto;
@@ -288,266 +313,165 @@ header {
     gap: 30px;
 }
 
-.about-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 45px 30px;
-    border-radius: 28px;
+.neon-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-glow);
+    padding: 50px 35px;
+    border-radius: 20px;
     text-align: center;
-    transition: var(--transition);
-    transform-style: preserve-3d;
-}
-
-.about-card:hover {
-    border-color: rgba(255, 95, 67, 0.4);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-
-.icon-box {
-    width: 75px;
-    height: 75px;
-    background: rgba(255, 56, 56, 0.07);
-    color: var(--primary-neon);
-    border-radius: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    margin: 0 auto 25px;
+    position: relative;
+    overflow: hidden;
     transition: var(--transition);
 }
 
-.about-card:hover .icon-box {
-    background: var(--gradient-glow);
-    color: white;
-    transform: translateZ(30px) rotate(10deg);
+.neon-card:hover {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 30px rgba(255, 0, 127, 0.2);
+    transform: translateY(-8px);
 }
 
-.about-card h3 {
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--neon-cyan);
+    margin-bottom: 25px;
+    transition: var(--transition);
+}
+
+.neon-card:hover .card-icon {
+    color: var(--neon-pink);
+    transform: scale(1.1);
+}
+
+.neon-card h3 {
     font-size: 1.4rem;
     margin-bottom: 15px;
 }
 
-.about-card p {
-    color: var(--text-gray);
+.neon-card p {
+    color: var(--text-secondary);
     font-size: 0.95rem;
 }
 
-/* بخش کاتالوگ و گالری هوشمند محصولات */
-.product-gallery {
+/* گالری با اورلی‌های سینمایی مدرن */
+.product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
 }
 
-.product-item {
+.product-card {
     position: relative;
-    border-radius: 24px;
+    border-radius: 20px;
     overflow: hidden;
-    border: 1px solid var(--card-border);
-    background: #0d131f;
-    aspect-ratio: 1 / 1;
+    background: #09090e;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    aspect-ratio: 4 / 3;
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-.product-item img {
-    width: 100%;
-    height: 100%;
+.img-zoom {
+    width: 100%; height: 100%;
+    overflow: hidden;
+}
+
+.product-card img {
+    width: 100%; height: 100%;
     object-fit: cover;
     transition: var(--transition);
 }
 
-.product-info {
+.card-overlay {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 40px 25px 25px;
-    background: linear-gradient(to top, rgba(8,11,17,0.95) 0%, rgba(8,11,17,0.5) 70%, transparent 100%);
-    transform: translateY(30px);
+    bottom: 0; left: 0; width: 100%;
+    padding: 30px;
+    background: linear-gradient(to top, #050508 0%, rgba(5,5,8,0.4) 70%, transparent 100%);
+    transform: translateY(15px);
     opacity: 0;
     transition: var(--transition);
 }
 
-.product-item:hover img {
-    transform: scale(1.1);
-}
+.product-card:hover img { transform: scale(1.1); }
+.product-card:hover .card-overlay { transform: translateY(0); opacity: 1; }
 
-.product-item:hover .product-info {
-    transform: translateY(0);
-    opacity: 1;
-}
+.card-overlay h4 { font-size: 1.3rem; margin-bottom: 5px; }
+.tech-tag { font-size: 0.85rem; color: var(--neon-cyan); font-weight: 700; }
 
-.product-info h3 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
-
-.product-info span {
-    font-size: 0.88rem;
-    color: var(--secondary-neon);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-/* بخش لینک‌ها و راه‌های ارتباط تجاری */
+/* هاب دکمه‌های شبکه فروش */
 .cta-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 25px 100px;
+    padding: 80px 25px 120px;
 }
 
-.cta-container {
-    background: linear-gradient(135deg, rgba(255, 56, 56, 0.05), rgba(255, 159, 67, 0.05));
-    border: 1px solid var(--card-border);
-    padding: 60px 40px;
-    border-radius: 32px;
+.glow-box {
+    background: radial-gradient(circle at top left, rgba(0,242,254,0.04), transparent), var(--glass-bg);
+    border: 1px solid var(--border-glow);
+    padding: 70px 40px;
+    border-radius: 30px;
     text-align: center;
-    backdrop-filter: blur(10px);
 }
 
-.cta-container h2 {
-    font-size: 2.2rem;
-    margin-bottom: 15px;
+.glow-box h2 { font-size: 2.2rem; margin-bottom: 15px; }
+.glow-box p { color: var(--text-secondary); margin-bottom: 40px; }
+
+.link-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
 }
 
-.cta-container p {
-    color: var(--text-gray);
-    margin-bottom: 40px;
-}
-
-.social-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.social-card {
+.cyber-btn {
     display: flex;
     align-items: center;
-    gap: 20px;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--card-border);
-    padding: 20px 25px;
-    border-radius: 20px;
+    gap: 12px;
+    padding: 16px 35px;
+    border-radius: 14px;
     text-decoration: none;
     color: white;
-    text-align: right;
+    font-weight: 700;
+    font-size: 1.05rem;
     transition: var(--transition);
 }
 
-.social-card i {
-    font-size: 2.2rem;
-}
+.basalam-btn { background: #df691a; box-shadow: 0 0 20px rgba(223, 105, 26, 0.2); }
+.basalam-btn:hover { box-shadow: 0 0 35px rgba(223, 105, 26, 0.5); transform: translateY(-4px); }
 
-.social-card h4 {
-    font-size: 1.15rem;
-    margin-bottom: 4px;
-}
+.telegram-btn { background: #0088cc; box-shadow: 0 0 20px rgba(0, 136, 204, 0.2); }
+.telegram-btn:hover { box-shadow: 0 0 35px rgba(0, 136, 204, 0.5); transform: translateY(-4px); }
 
-.social-card p {
-    font-size: 0.85rem;
-    color: var(--text-gray);
-    margin-bottom: 0;
-}
-
-.social-card.basalam:hover {
-    border-color: #df691a;
-    background: rgba(223, 105, 26, 0.08);
-    transform: translateY(-5px);
-}
-
-.social-card.basalam i { color: #df691a; }
-
-.social-card.telegram:hover {
-    border-color: #0088cc;
-    background: rgba(0, 136, 204, 0.08);
-    transform: translateY(-5px);
-}
-
-.social-card.telegram i { color: #0088cc; }
-
-/* بخش فوقانی فوتر (تماس) */
-.footer-contact {
-    background: rgba(255,255,255,0.01);
-    padding: 60px 25px;
-    text-align: center;
-    border-top: 1px solid var(--card-border);
-}
-
-.footer-contact h3 {
-    font-size: 1.4rem;
-    max-width: 700px;
-    margin: 0 auto 20px;
-}
-
-.web-url {
-    font-size: 2.2rem;
-    font-weight: 900;
-    background: var(--gradient-glow);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 1px;
-}
-
-.support-text {
-    color: var(--text-gray);
-    font-size: 0.95rem;
-    margin-top: 10px;
-}
-
-/* فوتر نهایی کپی‌رایت */
+/* فوتر انتهای صفحه */
 footer {
-    background: #05070b;
-    padding: 25px;
+    background: #020204;
+    padding: 50px 25px;
     text-align: center;
-    color: #475569;
-    font-size: 0.88rem;
-    border-top: 1px solid rgba(255,255,255,0.02);
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
 }
 
-/* بهینه‌سازی واکنش‌گرایی موبایل */
-@media (max-width: 968px) {
-    .hero {
-        flex-direction: column-reverse;
-        text-align: center;
-        padding-top: 130px;
-    }
-    .hero-content h1 { font-size: 2.2rem; }
-    .hero-btns { justify-content: center; }
-    .cube-3d { width: 140px; height: 140px; }
-    .cube-face { width: 140px; height: 140px; font-size: 1.1rem; }
-    .front { transform: translateZ(70px); }
-    .back { transform: rotateY(180deg) translateZ(70px); }
-    .left { transform: rotateY(-90deg) translateZ(70px); }
-    .right { transform: rotateY(90deg) translateZ(70px); }
-    .top { transform: rotateX(90deg) translateZ(70px); }
-    .bottom { transform: rotateX(-90deg) translateZ(70px); }
+.footer-logo { font-size: 1.8rem; font-weight: 900; margin-bottom: 10px; }
+.footer-logo span { color: var(--neon-cyan); }
+footer p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 25px; }
+.copyright { color: #334155; font-size: 0.85rem; }
 
+/* کامپکت کردن برای دستگاه‌های تبلت و موبایل */
+@media (max-width: 968px) {
+    .hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
+    .hero-content h1 { font-size: 2.3rem; }
+    .hero-btns { justify-content: center; flex-wrap: wrap; }
+    .hologram-container { transform: scale(0.8); }
+    
     .menu-toggle { display: flex; }
     .nav-links {
         position: fixed;
-        top: 73px;
-        right: -100%;
-        width: 100%;
-        height: calc(100vh - 73px);
-        background: var(--bg-dark);
+        top: 77px; right: -100%;
+        width: 100%; height: calc(100vh - 77px);
+        background: var(--bg-deep);
         flex-direction: column;
-        align-items: center;
         padding-top: 40px;
         transition: var(--transition);
     }
     .nav-links.active { right: 0; }
-    
-    /* انیمیشن زنده دکمه منو */
     .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
-    .menu-toggle.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-    .menu-toggle.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+    .menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 }
