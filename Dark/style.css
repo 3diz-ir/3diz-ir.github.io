@@ -1,0 +1,382 @@
+:root {
+    --void-black: #020204;
+    --neon-laser: #00ffaa;
+    --neon-energy: #ff0055;
+    --text-pure: #ffffff;
+    --text-dim: #64748b;
+    --glass-crystal: rgba(255, 255, 255, 0.01);
+    --border-crystal: rgba(0, 255, 170, 0.1);
+    --transition-ultra: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Vazirmatn', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--void-black);
+    color: var(--text-pure);
+    overflow-x: hidden;
+}
+
+/* بوم رندر افکت‌های تعاملی ماوس */
+#quantumCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* هدر مینیمال هولوگرافیک */
+header {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 1000;
+    background: rgba(2, 2, 4, 0.4);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.nav-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-core {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.quantum-core {
+    width: 14px; height: 14px;
+    background: var(--neon-laser);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--neon-laser);
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+
+.pulse-dot {
+    color: var(--neon-energy);
+    animation: flash 1s infinite alternate;
+}
+
+@keyframes flash { from { opacity: 0.2; } to { opacity: 1; } }
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dim);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: var(--transition-ultra);
+}
+
+.nav-num {
+    font-size: 0.75rem;
+    color: var(--neon-energy);
+    margin-left: 4px;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--text-pure);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 24px; height: 2px;
+    background-color: var(--text-pure);
+    transition: var(--transition-ultra);
+}
+
+/* بخش هیرو استودیوی کوانتومی */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 140px 25px 60px;
+    gap: 40px;
+}
+
+.hero-content { flex: 1.3; }
+
+.glow-tag {
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: var(--neon-laser);
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+.hero-content h1 {
+    font-size: 3.8rem;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 25px;
+}
+
+.cyber-gradient {
+    background: linear-gradient(90deg, var(--neon-laser), var(--neon-energy));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+    color: var(--text-dim);
+    font-size: 1.25rem;
+    margin-bottom: 45px;
+    max-width: 640px;
+}
+
+.hero-actions { display: flex; gap: 20px; }
+
+.btn-quantum {
+    background: var(--text-pure);
+    color: var(--void-black);
+    padding: 16px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 900;
+    transition: var(--transition-ultra);
+    box-shadow: 0 10px 30px rgba(255,255,255,0.05);
+}
+
+.btn-quantum:hover {
+    background: var(--neon-laser);
+    box-shadow: 0 0 30px rgba(0, 255, 170, 0.4);
+    transform: translateY(-4px);
+}
+
+.btn-hyper {
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-pure);
+    padding: 15px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition-ultra);
+}
+
+.btn-hyper:hover {
+    border-color: var(--neon-energy);
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.15);
+    transform: translateY(-4px);
+}
+
+/* سازه بصری متحرک هولوگرافیک */
+.hero-visual {
+    flex: 0.7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hologram-shield {
+    position: relative;
+    width: 280px; height: 280px;
+    display: flex; justify-content: center; align-items: center;
+}
+
+.core-sphere {
+    width: 70px; height: 70px;
+    background: radial-gradient(circle, var(--neon-energy), transparent);
+    border-radius: 50%;
+    filter: blur(5px);
+    animation: pulseCore 3s infinite ease-in-out;
+}
+
+.orbit {
+    position: absolute;
+    border: 1px solid rgba(0, 255, 170, 0.2);
+    border-radius: 50%;
+}
+
+.path-1 {
+    width: 260px; height: 260px;
+    border-style: dashed;
+    animation: orbitSpin 25s linear infinite;
+}
+
+.path-2 {
+    width: 180px; height: 180px;
+    border-color: var(--neon-energy);
+    opacity: 0.4;
+    animation: orbitSpin 12s linear infinite reverse;
+}
+
+.scan-line {
+    position: absolute;
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon-laser), transparent);
+    animation: scan Move 4s ease-in-out infinite;
+}
+
+@keyframes pulseCore { 0%, 100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.3); opacity: 1; } }
+@keyframes orbitSpin { 100% { transform: rotate(360deg); } }
+@keyframes scanMove { 0%, 100% { top: 0; opacity: 0; } 50% { top: 100%; opacity: 1; } }
+
+/* گرید کریستالی با ردیاب نوری ماوس */
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+    padding-top: 100px;
+}
+
+.section-header h2 { font-size: 2.6rem; font-weight: 900; }
+.laser-line {
+    width: 120px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon-laser), var(--neon-energy), transparent);
+    margin: 20px auto 0;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.crystal-card {
+    background: var(--glass-crystal);
+    border: 1px solid var(--border-crystal);
+    padding: 55px 35px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s ease;
+}
+
+/* لایه سایه نئونی تعقیب‌کننده ماوس */
+.light-tracker {
+    position: absolute;
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, rgba(0, 255, 170, 0.06), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    top: -500px; left: -500px; /* مخفی در حالت عادی */
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.crystal-card:hover .light-tracker { opacity: 1; }
+.crystal-card:hover { border-color: rgba(0, 255, 170, 0.3); }
+
+.card-icon { font-size: 2.4rem; color: var(--neon-laser); margin-bottom: 25px; }
+.crystal-card h3 { font-size: 1.45rem; margin-bottom: 15px; font-weight: 700; }
+.crystal-card p { color: var(--text-dim); font-size: 0.95rem; }
+
+/* کارت‌های گالری با فریم متحرک */
+.gallery-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+}
+
+.matrix-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: #06060c;
+    border: 1px solid rgba(255,255,255,0.02);
+    transition: var(--transition-ultra);
+}
+
+.img-container { width: 100%; aspect-ratio: 4/3; overflow: hidden; }
+.matrix-card img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition-ultra); }
+.matrix-info { padding: 25px; border-top: 1px solid rgba(255,255,255,0.02); }
+.matrix-info h4 { font-size: 1.25rem; margin-bottom: 5px; }
+.matrix-info p { color: var(--neon-laser); font-size: 0.85rem; font-weight: 700; }
+
+.matrix-card:hover { transform: scale(1.02); border-color: rgba(255,0,85,0.2); }
+.matrix-card:hover img { transform: scale(1.08) rotate(1deg); }
+
+/* پلتفرم فراخوانی به سفارش چندبعدی */
+.cta-section { max-width: 1200px; margin: 0 auto; padding: 80px 25px 120px; }
+
+.hyper-box {
+    background: #040408;
+    border: 1px solid rgba(255,255,255,0.03);
+    padding: 80px 40px;
+    border-radius: 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hyper-box h2 { font-size: 2.4rem; margin-bottom: 15px; font-weight: 900; }
+.hyper-box p { color: var(--text-dim); margin-bottom: 45px; }
+
+.action-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+
+.quantum-btn {
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 40px; border-radius: 8px;
+    text-decoration: none; color: white; font-weight: 700;
+    transition: var(--transition-ultra);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.quantum-btn.basalam:hover { background: #df691a; border-color: transparent; box-shadow: 0 0 30px rgba(223, 105, 26, 0.4); }
+.quantum-btn.telegram:hover { background: #0088cc; border-color: transparent; box-shadow: 0 0 30px rgba(0, 136, 204, 0.4); }
+
+/* فوتر با باینری استایل */
+footer {
+    background: #010102;
+    padding: 60px 25px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.01);
+}
+
+.f-logo { font-size: 2rem; font-weight: 900; color: var(--neon-laser); margin-bottom: 15px; }
+.binary-decor { font-size: 0.75rem; color: #1e293b; letter-spacing: 3px; margin-bottom: 20px; }
+.copy { color: #334155; font-size: 0.85rem; }
+
+/* ریسپانسیو ماتریکس هاب */
+@media (max-width: 968px) {
+    .hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
+    .hero-content h1 { font-size: 2.4rem; }
+    .hero-actions { justify-content: center; flex-wrap: wrap; }
+    .hologram-shield { transform: scale(0.75); }
+    
+    .menu-toggle { display: flex; }
+    .nav-links {
+        position: fixed; top: 78px; right: -100%;
+        width: 100%; height: calc(100vh - 78px);
+        background: var(--void-black); flex-direction: column;
+        padding-top: 40px; transition: var(--transition-ultra);
+    }
+    .nav-links.active { right: 0; }
+    .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.active .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.active .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
